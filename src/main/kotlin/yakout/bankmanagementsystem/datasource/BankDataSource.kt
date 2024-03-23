@@ -1,7 +1,9 @@
-package datasource
+package yakout.bankmanagementsystem.datasource
 
-import model.Bank
+import yakout.bankmanagementsystem.model.Bank
 
 interface BankDataSource {
-    fun getBanks() : Collection<Bank>
+    fun getBanks(): Collection<Bank>
+    fun getBank(accountNumber : Int): Bank
+    fun createBank(bank: Bank): Bank
 }
