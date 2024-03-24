@@ -9,5 +9,7 @@ class BankService(private val dataSource: BankDataSource) {
     fun getBanks(): Collection<Bank> = dataSource.getBanks()
     fun getBank(accountNumber: Int): Bank = dataSource.getBank(accountNumber)
     fun createBank(bank: Bank): Bank = dataSource.createBank(bank)
+    fun updateBank(bank: Bank): Bank = dataSource.updateBank(bank)
+    fun deleteBank(accountNumber: Int): Bank = dataSource.deleteBank(accountNumber)
 
 }
