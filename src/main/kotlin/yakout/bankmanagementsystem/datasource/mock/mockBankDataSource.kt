@@ -1,8 +1,8 @@
 package yakout.bankmanagementsystem.datasource.mock
-
 import yakout.bankmanagementsystem.datasource.BankDataSource
 import yakout.bankmanagementsystem.model.Bank
 import org.springframework.stereotype.Repository
+import yakout.bankmanagementsystem.repository.BankRepository
 
 @Repository
 class mockBankDataSource : BankDataSource {
@@ -12,7 +12,7 @@ class mockBankDataSource : BankDataSource {
     )
 
 
-    override fun getBanks(): Collection<Bank> = banks
+    override fun getBanks(): Collection<Bank> = BankRepository.findAll()
     override fun getBank(accountNumber: Int): Bank = banks.firstOrNull() { it.accountNumber == accountNumber }
         ?: throw NoSuchElementException("Could  not find bank with the account number : $accountNumber")
 
