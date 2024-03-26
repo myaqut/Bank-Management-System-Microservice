@@ -8,7 +8,7 @@ import jakarta.persistence.Table
 @Table(name = "bank")
 data class Bank(
     @Id
-    val accountNumber: Int,
-    val balance: Double,
-    val accountOwner: String
+    val accountNumber: Int = 0, // Default value for ID
+    val balance: Double = 0.0, // Default value for balance
+    val accountOwner: String = "" // Default value for accountOwner
 )
