@@ -20,7 +20,6 @@ internal class BankControllerTest @Autowired constructor(
     private val objectMapper: ObjectMapper
 ) {
     val baseURL = "/api/banks"
-
     @Nested
     @DisplayName("GET method Test")
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
