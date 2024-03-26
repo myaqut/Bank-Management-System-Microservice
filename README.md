@@ -1,7 +1,7 @@
-# Bank Management System Microservice
+# Bank Management System Webservice
 
 ## Description
-This project is a Kotlin-based microservice for a bank management system. It uses the Spring Boot framework to develop REST APIs that interact with a PostgreSQL database.
+This project is a Kotlin-based webservice for a bank management system. It uses the Spring Boot framework to develop REST APIs that interact with a PostgreSQL database.
 
 ## Features
 - REST APIs: The project provides a set of REST APIs to perform CRUD operations on the bank management system's database.
@@ -20,10 +20,10 @@ Here, you can list all the APIs that your project provides. For each API, provid
 ## Installation
 ```bash
 # Clone the repository
-git clone https://github.com/myaqut/Bank-Management-System-Microservice.git
+git clone https://github.com/myaqut/Bank-Management-System-Webservice.git
 
 # Navigate to the project directory
-cd Bank-Management-System-Microservice
+cd Bank-Management-System-Webservice
 
 # Install dependencies
 ./gradlew build
