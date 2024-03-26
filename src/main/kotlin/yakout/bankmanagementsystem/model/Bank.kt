@@ -5,7 +5,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "Bank")
+@Table(name = "bank")
 data class Bank(
     @Id
     val accountNumber: Int,
