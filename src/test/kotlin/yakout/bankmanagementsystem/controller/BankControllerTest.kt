@@ -21,10 +21,10 @@ internal class BankControllerTest @Autowired constructor(
 ) {
     val baseURL = "/api/banks"
     @Nested
-    @DisplayName("GET method Test")
+    @DisplayName("GET method Test for one bank")
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     inner class GETBank {
-        val bankAccountNumber: Int = 5
+        val bankAccountNumber: Int = 200
 
         @Test
         fun `return the bank`() {
@@ -32,14 +32,14 @@ internal class BankControllerTest @Autowired constructor(
                 status { isOk() }
                 content {
                     contentType(MediaType.APPLICATION_JSON)
-                    jsonPath("$.accountNumber") { value(5) }
+                    jsonPath("$.accountNumber") { value(200) }
                 }
 
             }
         }
 
         @Nested
-        @DisplayName("GET method for one bank")
+        @DisplayName("GET method for all banks")
         @TestInstance(TestInstance.Lifecycle.PER_CLASS)
         inner class GETBanks {
             @Test
@@ -101,10 +101,15 @@ internal class BankControllerTest @Autowired constructor(
             @Test
             fun `check if patch request send positive status`() {
 
-                //given
-
+                //giveng
+                val currentBank = Bank(5, 200.0, "owner")
                 val updatedBank = Bank(5, 300.0, "owner man")
                 // when
+                mockMvc.post(baseURL) {
+                    contentType = MediaType.APPLICATION_JSON
+                    content = objectMapper.writeValueAsString(currentBank)
+
+                }
                 val performPatch = mockMvc.patch(baseURL) {
                     contentType = MediaType.APPLICATION_JSON
                     content = objectMapper.writeValueAsString(updatedBank)
@@ -131,8 +136,13 @@ internal class BankControllerTest @Autowired constructor(
             fun `check if delete request send positive status`() {
 
                 //given
+                val currentBank = Bank(5, 200.0, "owner")
+                mockMvc.post(baseURL) {
+                    contentType = MediaType.APPLICATION_JSON
+                    content = objectMapper.writeValueAsString(currentBank)
 
-                val bankAccountNumber = 20
+                }
+                val bankAccountNumber = 5
                 // when
                 val performDelete = mockMvc.delete("$baseURL/$bankAccountNumber") {
 
